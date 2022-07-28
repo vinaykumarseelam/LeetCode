@@ -26,3 +26,19 @@ private double primeProduct(String str){
     }
     return result;
 }
+
+
+//         HashMap<String, List<String>> map = new HashMap<>();
+        
+//         for(String s : strs){
+//             char [] charArr = s.toCharArray(); //Spliting String to each char
+//             Arrays.sort(charArr);// Sorting each character
+//             String sorted = String.valueOf(charArr);// Putting Sorted string into a string
+            
+//             if(!map.containsKey(sorted)){
+//                 map.put(sorted, new ArrayList<>());
+//             }
+//               map.get(sorted).add(s);
+//         }
+//         return new ArrayList<>(map.values());
+ 
