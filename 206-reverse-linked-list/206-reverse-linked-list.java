@@ -9,6 +9,7 @@
  * }
  */
 class Solution {
+     ListNode reversed;
     public ListNode reverseList(ListNode head) {
       
         //base
@@ -16,9 +17,9 @@ class Solution {
         
         
         //logic
-        ListNode reversed = reverseList(head.next);
+       reversed =  reverseList(head.next);
         //st.pop()
-        
+        System.out.println(reversed.val);
         
         head.next.next = head;
         head.next = null; 
