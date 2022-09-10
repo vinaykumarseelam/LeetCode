@@ -3,7 +3,7 @@ class Solution {
         HashMap<Character, String> pMap = new HashMap<>();
         HashMap<String, Character> sMap = new HashMap<>();
        String[] v = s.split(" ");
-       // System.out.println(v[1]);
+      
         
         if((v.length > pattern.length()) || (v.length < pattern.length())) return false;
         
@@ -22,21 +22,26 @@ class Solution {
             }
             else
             {
-                pMap.put(pChar, sChar);
+                if(pMap.containsValue(v[i])) return false;
+                else
+                {
+                pMap.put(pChar, sChar);    
+                }
+                
                  
             }
             
             
-            if(sMap.containsKey(sChar)){
+//             if(sMap.containsKey(sChar)){
                    
-                if(! sMap.get(sChar).equals(pChar)) return false;
-              //  System.out.println(pMap);
+//                 if(! sMap.get(sChar).equals(pChar)) return false;
+//               //  System.out.println(pMap);
               
-            }
-            else
-            {
-                sMap.put(sChar, pChar);
-            }
+//             }
+//             else
+//             {
+//                 sMap.put(sChar, pChar);
+//             }
         }
         return true;
         
