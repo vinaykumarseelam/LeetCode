@@ -1,10 +1,7 @@
 class Solution {
     public boolean wordPattern(String pattern, String s) {
         HashMap<Character, String> pMap = new HashMap<>();
-        HashMap<String, Character> sMap = new HashMap<>();
        String[] v = s.split(" ");
-      
-        
         if((v.length > pattern.length()) || (v.length < pattern.length())) return false;
         
         for(int i=0 ; i< pattern.length(); i++){
@@ -32,16 +29,7 @@ class Solution {
             }
             
             
-//             if(sMap.containsKey(sChar)){
-                   
-//                 if(! sMap.get(sChar).equals(pChar)) return false;
-//               //  System.out.println(pMap);
-              
-//             }
-//             else
-//             {
-//                 sMap.put(sChar, pChar);
-//             }
+
         }
         return true;
         
