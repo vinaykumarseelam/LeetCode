@@ -26,16 +26,16 @@ class Solution {
         if(q.size() == m*n || q.size() == 0) return matrix;
         int dis = 0;
         while(!q.isEmpty()){
-            int size = q.size();
-            for(int i=0; i<size ; i++){
+            //int size = q.size();
+            //for(int i=0; i<size ; i++){
                   int[] curr = q.poll();
             for(int [] dir : dirs){
                 int nr = curr[0] + dir[0];
                 int nc = dir[1] + curr[1];
                 if(nr>=0 && nr<m && nc>=0 && nc<n && matrix[nr][nc] == -1){
                     q.add(new int[]{nr,nc});
-                    matrix[nr][nc] = dis + 1;
-                }
+                    matrix[nr][nc] = matrix[curr[0]][curr[1]] + 1;
+              //  }
             }
             }
           
