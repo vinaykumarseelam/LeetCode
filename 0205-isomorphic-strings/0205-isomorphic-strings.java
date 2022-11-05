@@ -1,25 +1,22 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        char smap[] = new char[256];
-        char tmap[] = new char[256];
+        HashMap<Character, Character> smap = new HashMap<>();
+        HashSet<Character> sSet = new HashSet<>();
         
-        for(int i = 0; i < s.length() ; i++){
+        for(int i = 0; i<s.length(); i++){
             char schar = s.charAt(i);
             char tchar = t.charAt(i);
             
-            if(smap[schar-' '] != 0){ 
-                if(smap[schar - ' '] != tchar) return false;
+            if(smap.containsKey(schar)){
+                if(smap.get(schar) != tchar) return false;
             }
             else{
-                smap[schar - ' '] = tchar;
+                smap.put(schar,tchar);
+                if(sSet.contains(tchar)) return false;
+                sSet.add(tchar);
             }
             
-            if(tmap[tchar - ' '] != 0){
-                if(tmap[tchar - ' '] != schar) return false;
-            }
-            else{
-                tmap[tchar - ' '] = schar;
-            }
+            
         }
         return true;
     }
@@ -36,3 +33,7 @@ class Solution {
 // 2 Approach - O(n), O(1)
      
 // Using Ascii code for storing values inside array.
+
+//3 Approach - 
+
+// Using one Hash Map and one Hash Set. In HashMap I can Check whether Key is exist. Set dont allow duplicates. So Set will check if my values have any duplicates exists.
