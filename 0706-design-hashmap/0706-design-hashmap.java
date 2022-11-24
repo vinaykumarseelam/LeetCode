@@ -1,25 +1,25 @@
 class MyHashMap {
-    class Node{
-        int key; int val;
-        Node next;
-        
-        public Node(int key, int val){
-            this.key = key;
-            this.val = val;
-        }
-    }
-    Node [] storage;
-    
-    private int hash(int key){
-        return key % 10000;
-    }
-
+ class Node{
+     int key;
+     int val;
+     Node next;
+     
+     public Node(int key, int val){
+         this.key = key;
+         this.val = val;
+     }
+ }
+    private Node[] storage;
+    private int buckets;
     public MyHashMap() {
-        this.storage = new Node[10000];
+        this.buckets =1000;
+        this.storage = new Node[this.buckets];
     }
-    private Node find(Node node, int key){
+    
+    private Node find(Node head,int key){
         Node prev = null;
-        Node curr = node;
+        Node curr = head;
+        
         while(curr != null && curr.key != key){
             prev = curr;
             curr = curr.next;
@@ -27,33 +27,42 @@ class MyHashMap {
         return prev;
     }
     
-    public void put(int key, int value) {
-        int hash = hash(key);
-        if(storage[hash] == null){
-            storage[hash] = new Node(-1,-1);
-        }
-        Node prev = find(storage[hash], key);
-        if(prev.next == null){
-            prev.next = new Node(key, value);
-        }
-        else{
-            prev.next.val = value;
-        }
+    private int hash1(int key){
+        return key%this.buckets;
     }
     
+    public void put(int key, int value) {
+        int hash1 = hash1(key);
+        if(storage[hash1] == null){
+            storage[hash1] = new Node(-1,-1);
+        }
+         Node prev = find(storage[hash1],key);
+         if (prev.next == null){ 
+              prev.next = new Node(key, value);
+            }
+            else{
+                prev.next.val = value;
+            }
+        }
+    
+    
     public int get(int key) {
-        int idx = hash(key);
-        if(storage[idx] == null) return -1;
-        Node prev = find(storage[idx], key);
+        int hash1 = hash1(key);
+        
+        if(storage[hash1] == null) return -1;
+        Node prev = find(storage[hash1], key);
+        
         if(prev.next == null) return -1;
-       return prev.next.val;   }
+        return prev.next.val;
+    }
     
     public void remove(int key) {
-        int idx = hash(key);
-        if(storage[idx] == null) return;
-        Node prev = find(storage[idx], key);
-        if(prev.next == null ) return;
-        prev.next = prev.next.next;
+        int hash1 = hash1(key);
+        
+        if(storage[hash1] == null) return;
+        Node prev = find(storage[hash1], key);
+        if(prev.next == null) return;
+            prev.next = prev.next.next;
     }
 }
 
