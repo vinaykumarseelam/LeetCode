@@ -1,5 +1,5 @@
 class MyHashSet {
-    private boolean [][] storage;
+ private boolean [][] storage;
     int bucket;
     int bucketsItems;
 
@@ -45,9 +45,8 @@ class MyHashSet {
         
         if(storage[hash1]== null) return false;
         return storage[hash1][hash2];
-    }
 }
-
+}
 /**
  * Your MyHashSet object will be instantiated and called as such:
  * MyHashSet obj = new MyHashSet();
