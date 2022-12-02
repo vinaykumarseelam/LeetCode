@@ -18,27 +18,27 @@ class Solution {
 //         if(case2 == -1) return case1;
 //         return Math.min(case1,case2);
         
-        int m = coins.length;
+       int m = coins.length;
         int n = amount;
-        int[][] dp = new int[m+1][n+1];
-        dp[0][0] = 0;
         
-        for(int j = 1; j <=n ; j++){
-            dp[0][j] = 99999;
+        int dp[][] = new int [m+1][n+1];
+        dp[0][0] = 0;
+        for(int j = 1; j<=n; j++){
+            dp[0][j] = 999999;
         }
         
-        for(int i=1; i<=m; i++){
-            for(int j=1; j<=n ; j++){
+        for(int i = 1; i<=m ; i++){
+            for(int j = 1; j<=n;j++){
                 if(j < coins[i-1]){
                     dp[i][j] = dp[i-1][j];
                 }
-                else{
-                    dp[i][j] = Math.min(dp[i-1][j], 1+ dp[i][j - coins[i-1]]);
+                else
+                {
+                    dp[i][j] = Math.min(dp[i - 1][j] , 1+dp[i][j - coins[i-1]]);
                 }
             }
         }
-        if(dp[m][n] >= 99999) return -1;
-            return dp[m][n]; 
-        
+        if(dp[m][n] >= 999999) return -1;
+        return dp[m][n];
     }
 }
